@@ -36,3 +36,13 @@ sort(coef(fit3)[,1],decreasing = TRUE)
 
 #The results are sensible as the classifiers predict that the inclusion of words such as counsel, term, anxiety, university, mental.health, worry, fine and service 
 #(first 4 highly weighted words of ridge and lasso models) show a high probability that the reddit post is related to mental health.
+
+cat("Confusion Matrix for plain logistic model","\n")
+ConfusionMatrix(pred1,test$IsMentalHealthRelated)
+cat("Confusion Matrix for Ridge logistic model","\n")
+ConfusionMatrix(pred2,test$IsMentalHealthRelated)
+cat("Confusion Matrix for Lasso logistic model","\n")
+ConfusionMatrix(pred3,test$IsMentalHealthRelated)
+
+#Confusion matrix shows confirms that the Lasso model works the best. The accuracy metric is sensitive to the collected data and hence the confusion matrix was plotted to 
+#ensure the model's effectiveness. 
